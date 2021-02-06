@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>play_with_API</title>
+</head>
+
+<body>
+    <h1 id="generate-task"></h1>
+
+
+    <script>
+        function generateTask() {
+            fetch('http://www.boredapi.com/api/activity/')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('generate-task').innerText = data.activity;
+                })
+        }
+        generateTask();
+        setInterval(() => {
+            generateTask();
+        }, 3000);
+    </script>
+</body>
+
+</html>
